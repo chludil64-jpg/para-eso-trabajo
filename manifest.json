@@ -1,0 +1,24 @@
+{
+  "name": "Para Eso Trabajo",
+  "short_name": "PET 3D",
+  "description": "Gestión de impresiones 3D — pedidos, clientes y filamentos",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080e18",
+  "theme_color": "#080e18",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
