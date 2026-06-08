@@ -850,11 +850,11 @@ async function waitForFirebase() {
 
 async function loadData() {
   await waitForFirebase();
-  const [p,c,f,cot] = await Promise.all([window._fb.fbGet('pedidos'), window._fb.fbGet('clientes'), window._fb.fbGet('filamentos'), window._fb.fbGet('cotizaciones')]);
-  data.pedidos      = p   ? Object.values(p)   : [];
-  data.clientes     = c   ? Object.values(c)   : [];
-  data.filamentos   = f   ? Object.values(f)   : [];
-  data.cotizaciones = cot ? Object.values(cot) : [];
+  const [p,c,f] = await Promise.all([window._fb.fbGet('pedidos'), window._fb.fbGet('clientes'), window._fb.fbGet('filamentos')]);
+  data.pedidos    = p ? Object.values(p) : [];
+  data.clientes   = c ? Object.values(c) : [];
+  data.filamentos = f ? Object.values(f) : [];
+  try { const cot = await window._fb.fbGet('cotizaciones'); data.cotizaciones = cot ? Object.values(cot) : []; } catch(e) { data.cotizaciones = []; }
   renderAll();
 }
 
@@ -862,7 +862,7 @@ function setupListeners() {
   window._fb.fbListen('pedidos', v => { data.pedidos = v ? Object.values(v) : []; renderPedidos(); updateDashboard(); updateBadge(); renderAlertas(); });
   window._fb.fbListen('clientes', v => { data.clientes = v ? Object.values(v) : []; renderClientes(); updateDashboard(); populateClienteSelect(); });
   window._fb.fbListen('filamentos', v => { data.filamentos = v ? Object.values(v) : []; renderFilamentos(); updateDashboard(); initCalculadora(); });
-  window._fb.fbListen('cotizaciones', v => { data.cotizaciones = v ? Object.values(v) : []; renderCotizaciones(); });
+  try { window._fb.fbListen('cotizaciones', v => { data.cotizaciones = v ? Object.values(v) : []; renderCotizaciones(); }); } catch(e) {}
 }
 
 async function saveItem(col, item) { await window._fb.fbSet(`${col}/${item.id}`, item); }
