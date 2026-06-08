@@ -1,4 +1,4 @@
-const CACHE = 'paraeso-v2';
+const CACHE = 'paraeso-v3';
 const ASSETS = [
   './',
   './index.html',
