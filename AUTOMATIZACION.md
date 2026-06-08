@@ -28,22 +28,20 @@ Antes de configurar nada, hay que permitir que Make.com escriba en la base de da
 1. Ir a [Firebase Console](https://console.firebase.google.com)
 2. Seleccionar el proyecto **para-eso-trabajo**
 3. En el menú izquierdo: **Realtime Database → Rules**
-4. Reemplazar las reglas existentes con esto:
+4. Verificar que las reglas sean exactamente estas (no cambiar nada si ya estaban así):
 
 ```json
 {
   "rules": {
-    ".read": "auth != null",
-    "cotizaciones": {
-      ".write": true
-    }
+    ".read": true,
+    ".write": true
   }
 }
 ```
 
 5. Clic en **Publicar**
 
-> ⚠️ Esto permite que Make.com escriba alertas sin autenticación. Solo la ruta `cotizaciones/` queda abierta; el resto sigue protegido.
+> ⚠️ La app no usa autenticación, por eso `.read` y `.write` deben ser `true`. Si los cambiás a `"auth != null"` la app deja de funcionar y no muestra ningún dato.
 
 ---
 
