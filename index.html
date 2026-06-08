@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="description" content="Gestión de impresiones 3D — Para Eso Trabajo">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="assets/logo.jpeg">
+<link rel="apple-touch-icon" href="assets/logo1.png">
 <link id="pwa-manifest" rel="manifest">
 <title>Para Eso Trabajo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;0,9..40,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -108,10 +108,12 @@ body::before {
   width:44px; height:44px; border-radius:50%; overflow:hidden; flex-shrink:0;
   border:1.5px solid rgba(78,172,202,0.42);
   box-shadow:0 0 0 3px rgba(78,172,202,0.10), 0 0 16px rgba(78,172,202,0.16);
+  background:#fff;
 }
 .header-logo-img {
   width:100%; height:100%;
-  object-fit:cover; object-position:50% 40%; display:block;
+  object-fit:cover; object-position:50% 47%; display:block;
+  scale:1.15;
 }
 .header-logo-text { font-weight:900; font-size:14px; letter-spacing:-0.3px; }
 .header-logo-sub  { font-size:10px; color:var(--accent); font-weight:500; margin-top:1px; opacity:0.85; }
@@ -461,7 +463,7 @@ select.form-control option { background:#0b1525; color:var(--text); }
 <header class="app-header">
   <div class="header-logo">
     <div class="header-logo-img-wrap">
-      <img src="assets/logo.jpeg" alt="Para Eso Trabajo" class="header-logo-img" loading="eager">
+      <img src="assets/logo1.png" alt="Para Eso Trabajo" class="header-logo-img" loading="eager">
     </div>
     <div>
       <div class="header-logo-text">Para Eso Trabajo</div>
@@ -797,7 +799,7 @@ let logo_data = '';
 let premioDescTexto = 'Descuento aplicable en una impresión a elección';
 let premioSorteo = null;
 
-fetch('./assets/logo.jpeg')
+fetch('./assets/logo1.png')
   .then(r => r.blob())
   .then(blob => new Promise((res, rej) => {
     const reader = new FileReader();
